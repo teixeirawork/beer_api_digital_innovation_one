@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import org.mockito.Mockito;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -78,7 +79,7 @@ public class BeerControllerTest {
 
         String beerJson = objectMapper.writeValueAsString(beerDTO);
 
-        when(beerService.createBeer(Mockito.any())).thenReturn(beerDTO);
+        when(beerService.createBeer(any(BeerDTO.class))).thenReturn(beerDTO);
 
         mockMvc.perform(post(BEER_API_URL_PATH)
                         .contentType(MediaType.APPLICATION_JSON)
