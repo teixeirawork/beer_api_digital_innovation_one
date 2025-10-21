@@ -45,6 +45,7 @@ class BeerServiceTest {
                 .build();
 
         beer = Beer.builder()
+                .id(1L)
                 .name("Skol")
                 .brand("Ambev")
                 .max(50)
